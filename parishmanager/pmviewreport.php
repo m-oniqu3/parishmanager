@@ -11,9 +11,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">-->
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
-    </style>
+    
     <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="http://localhost/roadnet/css/parishstyles.css">
 
@@ -52,7 +52,7 @@
 
     <div class="widebox mx-auto p-4 mt-4 mb-5">
         <p class="h1 ml-3 mt-3 text-white">View Reports</p>
-        <p class="lead mt-3 ml-3">View submitted incident reports in a particular location in your parish. Search for the report by its address or its town. </p>
+        <p class="lead mt-3 ml-3 text-white">View submitted incident reports in a particular location in your parish. Search for the report by its address or its town. </p>
     </div>
 
     <!--<div class="container mt-4">
@@ -97,7 +97,7 @@
             $sql = "SELECT * FROM report";
             if ($result = mysqli_query($link, $sql)) {
                 if (mysqli_num_rows($result) > 0) {
-                    echo '<table id="myTable" class=" table text-center table-bordered table-striped">';
+                    echo '<table id="myTable" class="table c table-bordered text-center table-sm table-responsive">';
                     echo '<thead>';
                     echo "<tr>";
                     echo "<th>ID</th>";
@@ -106,13 +106,14 @@
                     echo "<th>Phone</th>";
                     echo "<th>Parish</th>";
                     echo "<th>Town</th>";
-                    echo "<th>GPS</th>";
+                    echo "<th>GPS Coordinates</th>";
                     echo "<th>Address</th>";
                     echo "<th>Direction</th>";
                     echo "<th>Type</th>";
                     echo "<th>Description</th>";
                     echo "<th>Status</th>";
                     echo "<th>Date</th>";
+                    echo "<th>Priority</th>";
                     echo "</tr>";
                     echo "</thead>";
                     echo "<tbody>";
@@ -131,6 +132,7 @@
                         echo "<td>" . $row['description'] . "</td>";
                         echo "<td>" . $row['vstatus'] . "</td>";
                         echo "<td>" . $row['rdate'] . "</td>";
+                        echo "<td>" . $row['priority'] . "</td>";
                         //echo "<td>" . $row['role'] . "</td>";
 
                         echo "</tr>";
@@ -140,7 +142,7 @@
                     // Free result set
                     mysqli_free_result($result);
                 } else {
-                    echo '<div class="alert alert-danger"><em>No employee records were found.</em></div>';
+                    echo '<div class="alert alert-danger"><em>No reports were found.</em></div>';
                 }
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
